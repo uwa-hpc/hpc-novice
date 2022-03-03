@@ -1,7 +1,6 @@
-# Intro to HPC
+# HPC Novice
 
-This lesson teaches the basics of interacting with high-performance computing
-(HPC) clusters through the command line
+This lesson introduces programming embarrassingly parallel applications by calculating Pi using a variety of programming models
 
 [![Build Status](
 https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fcarpentries-incubator%2Fhpc-intro%2Fbadge%3Fref%3Dgh-pages&style=flat)](
