@@ -20,21 +20,21 @@
 # installation. Remember to keep the leading slash on the
 # `snippets` variable below!
 
-snippets: "/snippets_library/ComputeCanada_Graham_slurm"
+snippets: "/snippets_library/UWA_Kaya_slurm"
 
 local:
   prompt: "[user@laptop ~]$"
   bash_shebang: "#!/usr/bin/env bash"
 
 remote:
-  name: "Graham"
-  login: "graham.computecanada.ca"
-  host: "gra-login1"
-  node: "aci-377"
-  location: "University of Waterloo"
+  name: "kaya"
+  login: "kaya.hpc.uwa.edu.au"
+  host: "kaya1"
+  node: "n001"
+  location: "The University of Western Australia"
   homedir: "/home"
   user: "yourUsername"
-  prompt: "[yourUsername@gra-login1 ~]$"
+  prompt: "[yourUsername@kaya ~]$"
   module_python3: "python3"
   bash_shebang: "#!/usr/bin/env bash"
 
@@ -44,8 +44,8 @@ sched:
     name: "sbatch"
     options: ""
   queue:
-    debug: "debug"
-    testing: "testing"
+    debug: "short"
+    testing: "test"
   status: "squeue"
   flag:
     user: "-u yourUsername"
