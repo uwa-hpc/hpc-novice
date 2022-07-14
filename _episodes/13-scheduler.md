@@ -445,7 +445,7 @@ walltime, and attempt to run a job for two minutes.
 
 ```
 {{ site.remote.bash_shebang }}
-{{ site.sched.comment }} {{ site.sched.flag.name }} long_job
+{{ site.sched.comment }} {{ site.sched.flag.name }} test
 {{ site.sched.comment }} {{ site.sched.flag.time }} 00:00:30
 
 echo "This script is running on ... "

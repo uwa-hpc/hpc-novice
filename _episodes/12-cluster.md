@@ -515,7 +515,7 @@ upgrade your OS.
 >   computer and is being transmitted and made available over the network!
 > * **Scratch** -- typically faster than the networked home directory, but not
 >   usually backed up, and should not be used for long term storage.
-> * **Work** -- sometimes provided as an alternative to Scratch space, Work is
+> * **Group** -- sometimes provided as an alternative to Scratch space, Work is
 >   a fast file system accessed over the network. Typically, this will have
 >   higher performance than your home directory, but lower performance than
 >   Scratch; it may not be backed up. It differs from Scratch space in that
@@ -539,17 +539,19 @@ to this, and check with your site's operators or documentation for details of
 what is and isn't allowed. In these lessons, we will avoid running jobs on the
 head node.
 
-> ## Dedicated Transfer Nodes
->
-> If you want to transfer larger amounts of data to or from the cluster, some
-> systems offer dedicated nodes for data transfers only. The motivation for
-> this lies in the fact that larger data transfers should not obstruct
-> operation of the login node for anybody else. Check with your cluster's
-> documentation or its support team if such a transfer node is available. As a
-> rule of thumb, consider all transfers of a volume larger than 500 MB to 1 GB
-> as large. But these numbers change, e.g., depending on the network connection
-> of yourself and of your cluster or other factors.
-{: .callout}
+{% comment %}
+//> ## Dedicated Transfer Nodes
+//>
+//> If you want to transfer larger amounts of data to or from the cluster, some
+//> systems offer dedicated nodes for data transfers only. The motivation for
+//> this lies in the fact that larger data transfers should not obstruct
+//> operation of the login node for anybody else. Check with your cluster's
+//> documentation or its support team if such a transfer node is available. As a
+//> rule of thumb, consider all transfers of a volume larger than 500 MB to 1 GB
+//> as large. But these numbers change, e.g., depending on the network connection
+//> of yourself and of your cluster or other factors.
+//{: .callout}
+{% endcomment %}
 
 The real work on a cluster gets done by the *worker* (or *compute*) *nodes*.
 Worker nodes come in many shapes and sizes, but generally are dedicated to long
