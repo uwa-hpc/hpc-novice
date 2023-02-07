@@ -1,0 +1,39 @@
+```
+{{ site.remote.bash_shebang }} -l
+{{ site.sched.comment }} {{ site.sched.flag.name }} GE-fortranMPI_gnu
+{{ site.sched.comment }} {{ site.sched.flag.queue }} {{ site.sched.queue.testing }}
+{{ site.sched.comment }} --nodes=2
+{{ site.sched.comment }} --ntasks=20
+{{ site.sched.comment }} --ntasks-per-node=10
+{{ site.sched.comment }} --cpus-per-task=1
+
+{{ site.sched.comment }} --time=00:01:00
+{{ site.sched.comment }} --export=NONE
+
+# Load modules 
+
+#  Note: SLURM_JOBID is a unique number for every job.
+#  These are generic variables
+EXECUTABLE=/group/training/bin/hello_mpi_gnu
+SCRATCH=$MYSCRATCH/run_fortranMPI_gnu/$SLURM_JOBID
+RESULTS=$MYGROUP/fortranMPI_gnu_results/$SLURM_JOBID
+
+# Create unique directories to run job (scratch) and store results (group) 
+
+OUTPUT=fortranMPI_gnu.log
+~~~
+~~~
+#############################################
+#   Copy input files to $SCRATCH
+#   then change directory to $SCRATCH
+
+cd $SCRATCH
+srun --mpi=pmix_v3 --nodes=2 --ntasks=20 $EXECUTABLE >> ${OUTPUT}
+
+############################################
+#    $OUTPUT file to the unique results dir
+# note this can be a copy or move  
+mv  $OUTPUT ${RESULTS}
+
+```
+{: .language-bash}
