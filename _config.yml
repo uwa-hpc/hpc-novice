@@ -28,18 +28,18 @@ local:
 
 remote:
   name: "kaya"
-  login: "kaya.hpc.uwa.edu.au"
+  login: "kaya01.hpc.uwa.edu.au"
   host: "kaya1"
-  node: "n001"
+  node: "k001"
   location: "The University of Western Australia"
   homedir: "/home"
   user: "yourUsername"
-  prompt: "[yourUsername@kaya ~]$"
+  prompt: "[yourUsername@kaya01 ~]$"
   module_python3: "python3"
   bash_shebang: "#!/usr/bin/env bash"
 
 sched:
-  name: "Slurm"
+  name: "SLURM"
   submit:
     name: "sbatch"
     options: ""
@@ -90,7 +90,7 @@ title: "Introduction to High-Performance Computing"
 email: "team@carpentries.org"
 
 # Life cycle stage of the lesson ("pre-alpha", "alpha", "beta", "stable")?
-life_cycle: "alpha"
+life_cycle: "beta"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).

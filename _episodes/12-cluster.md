@@ -211,11 +211,11 @@ head node.
 //{: .callout}
 {% endcomment %}
 
-The real work on a cluster gets done by the *worker* (or *compute*) *nodes*.
-Worker nodes come in many shapes and sizes, but generally are dedicated to long
+The real work on a cluster gets done by the *compute* (or *worker*) *nodes*.
+Compute nodes come in many shapes and sizes, but generally are dedicated to long
 or hard tasks that require a lot of computational resources.
 
-All interaction with the worker nodes is handled by a specialized piece of
+All interaction with the compute nodes is handled by a specialized piece of
 software called a scheduler (the scheduler used in this lesson is called
 {{ site.sched.name }}). We'll learn more about how to use the
 scheduler to submit jobs next, but for now, it can also tell us more

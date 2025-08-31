@@ -84,7 +84,7 @@ Let's dissect what resources programs running on a laptop require:
 
 Schematically, this can be reduced to the following:
 
-{% include figure.html url="" max-width="30%"
+{% include figure.html url="" max-width="50%"
    file="/fig/Simple_Von_Neumann_Architecture.svg"
    alt="Schematic of how a computer works" caption="" %}
 

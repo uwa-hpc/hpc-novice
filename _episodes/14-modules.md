@@ -89,29 +89,29 @@ message telling you so
 {: .language-bash}
 
 ```
-No Modulefiles Currently Loaded.
+No modules loaded.
 ```
 {: .output}
 
 ## Loading and Unloading Software
 
 To load a software module, use `module load`. In this example we will use
-Python 3.
+gcc/14.3.0.
 
-Initially, Python 3 is not loaded. We can test this by using the `which`
+Initially, gcc is not loaded. We can test this by using the `which`
 command. `which` looks for programs the same way that Bash does, so we can use
 it to tell us where a particular piece of software is stored.
 
 ```
-{{ site.remote.prompt }} which python3
+{{ site.remote.prompt }} which gcc
 ```
 {: .language-bash}
 
-{% include {{ site.snippets }}/modules/missing-python.snip %}
+{% include {{ site.snippets }}/modules/gcc-system.snip %}
 
-We can load the `python3` command with `module load`:
+We can load the `gcc/14.3.0` command with `module load`:
 
-{% include {{ site.snippets }}/modules/module-load-python.snip %}
+{% include {{ site.snippets }}/modules/correct_gcc_path.snip %}
 
 {% include {{ site.snippets }}/modules/python-executable-dir.snip %}
 

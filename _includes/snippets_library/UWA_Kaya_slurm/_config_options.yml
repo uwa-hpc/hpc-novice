@@ -24,24 +24,24 @@ local:
   bash_shebang: "#!/usr/bin/env bash"
 
 remote:
-  name: "kaya"
-  login: "kaya.hpc.uwa.edu.au"
-  host: "kaya"
-  node: "n001"
+  name: "kaya01"
+  login: "kaya01.hpc.uwa.edu.au"
+  host: "kaya01.hpc.uwa.edu.au"
+  node: "k001"
   location: "The University of Western Australia"
-  homedir: "/users"
-  user: "yourUsername"
-  prompt: "[yourUsername@kaya ~]"
-  bash_shebang: "#!/usr/bin/env bash"
+  homedir: "/home"
+  user: "achakma"
+  prompt: "achakma@kaya01[~]"
+  bash_shebang: "#!/usr/bin/bash -l"
 
 sched:
   name: "Slurm"
   submit:
     name: "sbatch"
-    options: "--partition=day"
+    options: "--partition=work"
   queue:
-    debug: "short"
-    testing: "test"
+    debug: "debug"
+    testing: ""
   status: "squeue"
   flag:
     user: "-u yourUsername"
@@ -51,6 +51,7 @@ sched:
     time: "-t"
     queue: "-p"
   del: "scancel"
+  hostname: "kaya01.hpc.uwa.edu.au"
   interactive: "srun"
   info: "sinfo"
   comment: "#SBATCH"

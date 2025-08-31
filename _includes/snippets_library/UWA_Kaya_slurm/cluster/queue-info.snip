@@ -1,23 +1,15 @@
 ```
 PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-admin        up   infinite      3    mix n[001-002,004]
-admin        up   infinite      2  alloc n[003,005]
-admin        up   infinite      3   idle p[003,021,025]
-test         up       5:00      3    mix n[001-002,004]
-test         up       5:00      2  alloc n[003,005]
-short        up    1:00:00      2    mix n[001,004]
-short        up    1:00:00      2  alloc n[003,005]
-day          up 1-00:00:00      2    mix n[001,004]
-day          up 1-00:00:00      2  alloc n[003,005]
-week         up 7-00:00:00      2    mix n[001,004]
-week         up 7-00:00:00      1  alloc n005
-kip          up 3-00:00:00      2  drain p[035-036]
-kip          up 3-00:00:00      3  alloc p[005,012-013]
-kip          up 3-00:00:00     16   idle p[004,006-011,026-034]
-abinitio     up   infinite      3  alloc p[005,012-013]
-abinitio     up   infinite     17   idle n[014-018],p[004,006-011,015-018,021]
-pophealth    up 15-00:00:0      1    mix n002
-animation    up 4-00:00:00      1    mix n002
-cits5508     up      45:00      1  alloc n003
+ondemand     up   12:00:00      1   idle k011
+ondemand-gpu up   12:00:00      1   plnd k037
+ondemand-gpu up   12:00:00     12   idle k[026-035,038-039]
+ondemand-gpu up   12:00:00      1   down k036
+amdgpu       up 3-00:00:00      1  drain k014
+amdgpu       up 3-00:00:00      1   idle k015
+work*        up 3-00:00:00      3   plnd k[001,012-013]
+work*        up 3-00:00:00      9   idle k[002-010]
+gpu          up 3-00:00:00      1   plnd k037
+gpu          up 3-00:00:00     17   idle k[026-035,038-044]
+gpu          up 3-00:00:00      1   down k036
 ```
 {: .output}
