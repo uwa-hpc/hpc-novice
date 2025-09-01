@@ -70,7 +70,8 @@ episode_order:
   - 15-transferring-files
   - 16-parallel
   - 17-resources
-  - 18-responsibility
+  - 18-using-r
+  - 19-responsibility
 
 #------------------------------------------------------------
 # Values for this lesson

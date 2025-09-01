@@ -1,0 +1,78 @@
+```
+#!/bin/bash --login
+## These are the SLURM DIRECTIVES 
+#SBATCH --job-name=R_array_test
+#SBATCH --array=10-100:10
+#SBATCH --partition=work
+#SBATCH --ntasks=1
+#SBATCH --mem=1G
+#SBATCH --time=00:05:00
+#SBATCH --output=Rarray_%A_%a.out   
+#SBATCH --export=NONE
+
+# To load the application
+module load r/4.4.2
+
+# leave in, it lists the environment loaded by the modules
+module list
+
+#  Note: SLURM_JOBID is a unique number for every job.
+#  These are generic variables
+EXECUTABLE=cl_arg.r
+TASK=$SLURM_ARRAY_TASK_ID
+SCRATCH=$MYSCRATCH/run_Rscript/$SLURM_ARRAY_JOB_ID/$TASK
+RESULTS=$MYGROUP/Rscript_results/$SLURM_ARRAY_JOB_ID/$TASK
+
+###############################################
+# Creates a unique directory in the SCRATCH directory for this job to run in.
+if [ ! -d $SCRATCH ]; then 
+    mkdir -p $SCRATCH 
+fi 
+echo SCRATCH is $SCRATCH
+
+###############################################
+# Creates a unique directory in your GROUP directory for the results of this job
+if [ ! -d $RESULTS ]; then 
+    mkdir -p $RESULTS 
+fi
+echo the results directory is $RESULTS
+
+################################################
+# declare the name of the output file or log file
+OUTPUT=rscript.out
+
+#############################################
+#
+#   cd to the directory where you type sbatch to submit job
+#   Copy input files to $SCRATCH
+#   then change directory to $SCRATCH
+
+cd $SLURM_SUBMIT_DIR
+
+# copy all the r/R files 
+cp *.R $SCRATCH
+cp *.r $SCRATCH
+
+cd $SCRATCH
+
+#############################################
+#  execute the script 
+
+Rscript $EXECUTABLE 3.2 0.5 $TASK > ${OUTPUT}
+
+#############################################
+#    $OUTPUT file to the unique results dir
+# note this can be a copy or move  
+mv  $OUTPUT ${RESULTS}
+
+cd $HOME
+
+###########################
+# Clean up $SCRATCH 
+
+rm -r $SCRATCH
+
+echo Rscript single job finished at  `date`
+```
+{: .language-bash}
+

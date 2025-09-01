@@ -1,0 +1,21 @@
+```
+#
+# A test Rscript that takes command line arguements -- cl_arg
+#
+args = commandArgs(TRUE)
+
+# as.double and as.integer convert string to numbers
+r <- as.double(args[1])
+x <- as.double(args[2])
+n <- as.integer(args[3])
+
+# ARGS are defaulted to strings types so you have to convert strings to numbers
+# name <- args[4]
+
+source("logistic.R")
+
+for (i in 1:n) x <- logistic(r, x)
+print(x)
+
+```
+{: .lanquage-bash}

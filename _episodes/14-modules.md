@@ -98,22 +98,41 @@ No modules loaded.
 To load a software module, use `module load`. In this example we will use
 gcc/14.3.0.
 
-Initially, gcc is not loaded. We can test this by using the `which`
+The module file for the lastest version of gcc is not loaded. We can verify this by using the `which`
 command. `which` looks for programs the same way that Bash does, so we can use
 it to tell us where a particular piece of software is stored.
 
-```
-{{ site.remote.prompt }} which gcc
-```
-{: .language-bash}
+{% include {{ site.snippets }}/modules/which-gcc.snip %} 
 
-{% include {{ site.snippets }}/modules/gcc-system.snip %}
+{% include {{ site.snippets }}/modules/wrong-gcc-path.snip %}
+
+What version is this?  
+
+{% include {{ site.snippets }}/modules/gcc-system.snip %} 
+
+Where is gcc?
+
+{% include {{ site.snippets }}/modules/wrong-gcc-path.snip %}
+
+What is in your environment variable `PATH`
+
+{% include {{ site.snippets }}/modules/echo-path.snip %}
+
+Here is your what is in your default PATH.
+
+{% include {{ site.snippets }}/modules/default_path.snip %} 
+
+Where is gcc in this? How do we get something different?
 
 We can load the `gcc/14.3.0` command with `module load`:
 
+{% include {{ site.snippets }}/modules/which-gcc.snip %} 
+
 {% include {{ site.snippets }}/modules/correct_gcc_path.snip %}
 
-{% include {{ site.snippets }}/modules/python-executable-dir.snip %}
+Do we have the version expected?
+
+{% include {{ site.snippets }}/modules/correct_gcc_version.snip %} 
 
 So, what just happened?
 
@@ -129,16 +148,26 @@ variables we can print it out using `echo`.
 ```
 {: .language-bash}
 
-{% include {{ site.snippets }}/modules/python-module-path.snip %}
+{% include {{ site.snippets }}/modules/gcc-module-load.snip %}
+Again using `which` to display the path to the command `gcc`.
+
+{% include {{ site.snippets }}/modules/which-gcc.snip %} 
+
+{% include {{ site.snippets }}/modules/correct_gcc_path.snip %}
 
 You'll notice a similarity to the output of the `which` command. In this case,
 there's only one difference: the different directory at the beginning. When we
 ran the `module load` command, it added a directory to the beginning of our
 `$PATH`. Let's examine what's there:
+Before we run the `module load gcc/14.3.0` command the `$PATH` environment has 
+these directories.
+{% include {{ site.snippets }}/modules/before-full-path.snip  %}
 
-{% include {{ site.snippets }}/modules/python-ls-dir-command.snip %}
+After we run the `module load gcc/14.3.0` the $PATH environment now has
 
-{% include {{ site.snippets }}/modules/python-ls-dir-output.snip %}
+{% include {{ site.snippets }}/modules/after-full-path.snip  %}
+
+The `$PATH` now shows that full path to the `bin` directory of new version of gcc hascd  been `pre-pended` to the `$PATH`
 
 Taking this to its conclusion, `module load` will add software to your `$PATH`.
 It "loads" software. A special note on this - depending on which version of the
