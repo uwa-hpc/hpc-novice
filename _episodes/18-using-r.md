@@ -4,15 +4,13 @@ teaching: 60
 exercises: 10
 questions:
 - "How do we use R on Kaya?"
-- "Can we run R interactively with RStudio on Kaya"
+- "SLURM scripting for a single R job and arrays of R jobs"
 - "How do we install new packages"
 objectives:
 - "Understand how to run a R job on a cluster."
 - "Configuring and Maintaining a R Librarys on Kaya."
-- "Running RStudio Interactively on Kaya."
 keypoints:
 - "Maintaininr R Libraries on HPC clusters."
-- "Using OnDemand"
 - "Installing packaages on R"
 ---
 
@@ -25,8 +23,7 @@ mining, bioinformatics, data analysis, and data science. The
 core R language is extended by a large number of software packages,
  which contain reusable code, documentation, and sample data.
 
-This section is `not` about writing R scripts, it is about installing 
-packages and running R scripts.
+### This episode is `NOT` about writing R scripts, it is about running R scripts and maintaining R.
 
 ## Sample SLURM script for R
 
@@ -124,5 +121,59 @@ for a subset of tasks
 ```
 scancel <JOBID>_[<TASK_ID>_<TASK_ID>]  <- note square brackets!!!
 ```
+## R Package Library Managment 
+
+On Kaya we do support the base R statistical application. Howeve we do not support
+centrally additional librarys and package as it is too complicated to do centrally.
+What we do allow is for researchers on Kaya to maintain local R libraries.  To this end 
+we have a set of tools *scripts* we do support and can help researchers use.
+
+### R Environment 
+
+When you run the command `R` it searches for additional R libaries that are included in the R environment.
+Most likey when you have run `R` in the past the R libraries are installed in the default location which is 
+where the base `R` is installed.  On Kaya this is in 
+```
+\uwahpc\rocky9\apps\gcc\14.3.0\r\4.4.2 
+```
+if you inspect this using **ls -al** you will see 
+```
+[cbording@kaya01 ~]$ ls -al /uwahpc/rocky9/apps/gcc/14.3.0/r/4.4.2 
+total 5
+drwxr-xr-x 5 maali maali 4096 Jun  3 09:41 .
+drwxr-xr-x 4 maali maali 4096 Jun  3 09:34 ..
+drwxr-xr-x 2 maali maali 4096 Jun  3 09:41 bin
+drwxr-xr-x 4 maali maali 4096 Jun  3 09:41 lib64
+drwxr-xr-x 3 maali maali 4096 Jun  3 09:41 share
+```
+Everything is that director is `owned` by **maali**. This means you can't write to the `lib64` directory.
+However you can change the search path because `R` searchs in your `$HOME` directory before it looks in the
+default location, it will add the value of `R_LIBS_USER` to the search path for `R`.
+
+In your `$HOME` directory you can create a file **.Renviron** with `R_LIBS_USER` defined.
+
+```
+ # set the R_LIBS_USER path
+ R_LIBS_USER=${R_LIBRARY} 
+```
+
+### Defined and creating a local R library.
+
+In your home directory for a hidden file ***.Renviron*** in which you can 
+define R environment variables.  The one we will focus on is,
+```
+R_LIBS_USER=<path to local R library>
+```
+Where to create a local `R library`, on Kaya? This should be in your *$MYGROUP* as your *$HOME* 
+directory is has a hard quota of *20GB* so it is too small to have the library there.
+
+Here is a example of installing two package to a locally defined `R library`.
+
+{% include {{ site.snippets }}/using-r/seurat.snip  %}
+
+Here is an example for installing R packages from a github repository.
+
+{% include {{ site.snippets }}/using-r/github_pkg.snip  %}
+
 
 {% include links.md %}
