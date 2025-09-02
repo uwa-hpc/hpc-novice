@@ -1,0 +1,10 @@
+```
+R_LIBRARY="/group/<project_id>/$USER/Rlibrary/4.4.1"
+options(Ncpus = 12)
+local({r = getOption("repos");r["CRAN"]="https://mirror.aarnet.edu.au/pub/CRAN/"; options(repos=r)})
+setRepositories(graphics=F,ind=1:6)
+install.packages("remotes",lib="/group/<project_id>/$USER/Rlibrary/4.4.1")
+remotes::install_github(repo = "thomasp85/patchwork",lib="/group/<project_id>/$USER/Rlibrary/4.4.1")
+
+```
+{: .language-bash}
